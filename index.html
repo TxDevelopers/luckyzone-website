@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>LuckyZone Pakistan – #1 Online Casino &amp; Sports Betting | Play &amp; Win</title>
+<meta name="description" content="LuckyZone is Pakistan's #1 online gaming platform. Play Teen Patti, Aviator, Roulette, Blackjack and bet on live cricket, PSL, football with real-time odds. SSL secured. Instant withdrawals via JazzCash and EasyPaisa."/>
+<meta name="keywords" content="online casino pakistan, sports betting pakistan, teen patti online, aviator game, live betting, luckyzone pakistan, PSL betting, JazzCash casino, EasyPaisa casino"/>
+<meta property="og:title" content="LuckyZone – Pakistan's #1 Gaming Platform"/>
+<meta property="og:description" content="Play casino games and bet on live sports. SSL secured, instant withdrawals, 24/7 support."/>
+<meta property="og:type" content="website"/>
+<meta name="robots" content="index, follow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ─── TOKENS ─────────────────────────────── */
+:root {
+  --gold:    #FFD700;
+  --gold2:   #FFA500;
+  --gold3:   #FF8C00;
+  --red:     #E8003D;
+  --red2:    #FF1744;
+  --green:   #00E676;
+  --dark:    #03030A;
+  --dark2:   #07071A;
+  --dark3:   #0D0D24;
+  --card:    rgba(12,12,32,0.82);
+  --card2:   rgba(18,18,46,0.92);
+  --gb:      rgba(255,255,255,0.07);  /* glass border */
+  --blue:    #00BFFF;
+  --text:    #F0F0FF;
+  --muted:   #8889BB;
+
+  --r-sm:   12px;
+  --r-md:   20px;
+  --r-lg:   28px;
+  --r-pill: 999px;
+
+  --sp-xs: 8px;
+  --sp-sm: 16px;
+  --sp-md: 24px;
+  --sp-lg: 40px;
+  --sp-xl: 64px;
+  --sp-2x: 96px;
+
+  --ease-out: cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ─── RESET ──────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+button{font-family:'Rajdhani',sans-serif;cursor:none;}
+img{max-width:100%;}
+::selection{background:rgba(255,215,0,.18);color:var(--gold);}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--dark);}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--gold2));}
+
+/* ─── LOADER ─────────────────────────────── */
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--dark);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  transition:opacity .7s var(--ease-out),visibility .7s;
+}
+#loader.out{opacity:0;visibility:hidden;}
+.ld-logo{
+  font-family:'Orbitron',sans-serif;font-size:2.2rem;font-weight:900;letter-spacing:6px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:ldPulse 1.1s ease-in-out infinite alternate;
+}
+@keyframes ldPulse{
+  from{filter:drop-shadow(0 0 6px rgba(255,215,0,.3));}
+  to  {filter:drop-shadow(0 0 32px rgba(255,215,0,1));}
+}
+.ld-track{width:260px;height:2px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;}
+.ld-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--red));border-radius:2px;animation:ldFill 1.9s var(--ease-out) forwards;}
+@keyframes ldFill{from{width:0}to{width:100%}}
+.ld-txt{font-size:.68rem;letter-spacing:4px;color:var(--muted);text-transform:uppercase;font-weight:700;}
+
+/* ─── CUSTOM CURSOR ──────────────────────── */
+.cur{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);mix-blend-mode:difference;}
+.cur-ring{position:fixed;width:38px;height:38px;border:1.5px solid rgba(255,215,0,.45);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
+.cur-ring.big{width:62px;height:62px;border-color:rgba(255,215,0,.85);}
+
+/* ─── CANVAS ─────────────────────────────── */
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+
+/* ─── NAV ────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--sp-xl);height:68px;
+  background:rgba(3,3,10,.82);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid rgba(255,215,0,.09);
+  transition:background .35s;
+}
+nav.scrolled{background:rgba(3,3,10,.97);}
+nav::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 0%,var(--gold) 50%,transparent 100%);
+  animation:navLine 4s ease-in-out infinite;
+}
+@keyframes navLine{0%,100%{opacity:.25}50%{opacity:.9}}
+
+.logo{
+  font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:900;letter-spacing:3px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2),#fff8dc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:logoPulse 3s ease-in-out infinite alternate;
+}
+@keyframes logoPulse{
+  from{filter:drop-shadow(0 0 6px rgba(255,215,0,.3));}
+  to  {filter:drop-shadow(0 0 24px rgba(255,215,0,.95));}
+}
+.nav-links{display:flex;gap:var(--sp-lg);list-style:none;align-items:center;}
+.nav-links a{
+  color:var(--muted);font-size:.75rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;transition:color .25s;position:relative;padding-bottom:4px;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  transform:scaleX(0);transition:transform .32s;transform-origin:left;
+}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{transform:scaleX(1);}
+
+.nav-cta{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;border:none;padding:10px 28px;border-radius:var(--r-pill);
+  font-weight:900;font-size:.76rem;letter-spacing:2px;text-transform:uppercase;
+  box-shadow:0 0 24px rgba(255,165,0,.35),0 4px 12px rgba(0,0,0,.3);
+  transition:transform .25s var(--ease-out),box-shadow .25s;
+}
+.nav-cta::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.28),transparent 70%);
+  transform:translateX(-100%);transition:transform .55s;
+}
+.nav-cta:hover::before{transform:translateX(100%);}
+.nav-cta:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 0 48px rgba(255,215,0,.65),0 8px 20px rgba(0,0,0,.35);}
+
+/* ─── HERO ───────────────────────────────── */
+#hero{
+  position:relative;z-index:2;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:120px var(--sp-md) 80px;overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,215,0,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,215,0,.028) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 85% 85% at 50% 50%,black,transparent);
+  animation:gridDrift 22s linear infinite;
+}
+@keyframes gridDrift{from{background-position:0 0}to{background-position:64px 64px}}
+
+.orb1{position:absolute;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(255,165,0,.07),transparent 70%);top:-260px;left:-240px;pointer-events:none;animation:orbA 13s ease-in-out infinite alternate;}
+.orb2{position:absolute;width:540px;height:540px;border-radius:50%;background:radial-gradient(circle,rgba(232,0,61,.06),transparent 70%);bottom:-140px;right:-140px;pointer-events:none;animation:orbB 11s ease-in-out infinite alternate;}
+@keyframes orbA{from{transform:translate(0,0)}to{transform:translate(70px,50px)}}
+@keyframes orbB{from{transform:translate(0,0)}to{transform:translate(-50px,-35px)}}
+
+.float-cards{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.fcard{position:absolute;animation:floatUp linear infinite;opacity:.11;}
+@keyframes floatUp{
+  0%  {transform:translateY(108vh) rotate(0deg) scale(.75);opacity:0}
+  5%  {opacity:.13}
+  90% {opacity:.07}
+  100%{transform:translateY(-14vh) rotate(720deg) scale(1.2);opacity:0}
+}
+
+/* hero text */
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.22);
+  color:var(--gold);padding:9px 24px;border-radius:var(--r-pill);
+  font-size:.68rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:var(--sp-lg);animation:fadeDown .8s ease both;
+}
+.bdot{width:7px;height:7px;background:var(--green);border-radius:50%;flex-shrink:0;animation:bdotPulse 1.3s ease-in-out infinite;}
+@keyframes bdotPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,230,118,.7)}50%{box-shadow:0 0 0 9px rgba(0,230,118,0)}}
+
+.hero-eye{font-size:.78rem;letter-spacing:8px;color:var(--gold2);text-transform:uppercase;margin-bottom:var(--sp-sm);font-weight:700;animation:fadeDown .85s ease .06s both;}
+
+.hero-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5.5rem,17vw,12rem);
+  line-height:.86;margin-bottom:var(--sp-sm);
+  animation:fadeDown .9s ease .12s both;
+}
+.hero-title .l1{
+  display:block;
+  background:linear-gradient(150deg,#fff 0%,var(--gold) 38%,var(--gold2) 68%,#fff 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-size:220% auto;animation:textShine 4.5s linear infinite;
+  filter:drop-shadow(0 0 70px rgba(255,215,0,.32));
+}
+.hero-title .l2{
+  display:block;
+  -webkit-text-stroke:2px rgba(255,215,0,.32);
+  -webkit-text-fill-color:transparent;
+  letter-spacing:4px;
+}
+@keyframes textShine{0%{background-position:0 center}100%{background-position:220% center}}
+
+.hero-sub{
+  font-size:clamp(.95rem,1.8vw,1.1rem);color:var(--muted);
+  max-width:540px;line-height:2;margin-bottom:var(--sp-xl);
+  font-weight:500;animation:fadeDown 1s ease .22s both;
+}
+
+/* ── CTA BUTTONS ── */
+.hero-btns{display:flex;gap:var(--sp-sm);flex-wrap:wrap;justify-content:center;animation:fadeDown 1.1s ease .32s both;margin-bottom:var(--sp-xl);}
+
+.btn-primary{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--gold),var(--gold2),var(--gold3));
+  color:#000;border:none;padding:18px 48px;border-radius:var(--r-pill);
+  font-weight:900;font-size:.92rem;letter-spacing:2px;text-transform:uppercase;
+  box-shadow:0 0 32px rgba(255,165,0,.4),0 4px 16px rgba(0,0,0,.35);
+  transition:transform .3s var(--ease-out),box-shadow .3s;display:inline-block;
+}
+.btn-primary::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.3),transparent 70%);transform:translateX(-100%);transition:transform .6s;}
+.btn-primary:hover::before{transform:translateX(100%);}
+.btn-primary:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 0 64px rgba(255,215,0,.75),0 12px 28px rgba(0,0,0,.4);}
+
+.btn-secondary{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.82);padding:18px 48px;border-radius:var(--r-pill);
+  font-weight:700;font-size:.92rem;letter-spacing:2px;text-transform:uppercase;
+  transition:all .3s var(--ease-out);display:inline-block;
+}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);box-shadow:0 0 32px rgba(255,215,0,.18);transform:translateY(-3px) scale(1.03);}
+
+/* ── AVIATOR TICKER ── */
+.av-ticker{
+  display:inline-flex;align-items:center;gap:18px;
+  background:rgba(232,0,61,.07);backdrop-filter:blur(14px);
+  border:1px solid rgba(232,0,61,.2);border-left:3px solid var(--red);
+  padding:16px 32px;border-radius:0 var(--r-sm) var(--r-sm) 0;
+  animation:fadeDown 1.3s ease .42s both;position:relative;overflow:hidden;
+}
+.av-ticker::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(232,0,61,.06),transparent);animation:scan 2.8s linear infinite;}
+@keyframes scan{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.av-plane{font-size:1.3rem;animation:planeFly 2.2s ease-in-out infinite alternate;}
+@keyframes planeFly{from{transform:translateX(-5px) rotate(-10deg)}to{transform:translateX(5px) rotate(10deg)}}
+.av-label{font-size:.66rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;font-weight:700;}
+.av-val{font-family:'Orbitron',sans-serif;font-size:2rem;font-weight:900;transition:color .5s;text-shadow:0 0 22px currentColor;}
+
+/* ─── REALTIME PANEL ─────────────────────── */
+.rt-panel{
+  position:relative;z-index:2;
+  background:rgba(6,6,20,.75);backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,215,0,.1);border-bottom:1px solid rgba(255,215,0,.06);
+  overflow:hidden;
+}
+.rt-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:navLine 3.5s ease-in-out infinite;}
+.rt-inner{display:flex;align-items:stretch;max-width:1400px;margin:0 auto;overflow-x:auto;scrollbar-width:none;}
+.rt-inner::-webkit-scrollbar{display:none;}
+.rt-stat{
+  flex:1;min-width:148px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:22px var(--sp-md);border-right:1px solid rgba(255,255,255,.05);
+  text-align:center;transition:background .3s;
+}
+.rt-stat:last-child{border-right:none;}
+.rt-stat:hover{background:rgba(255,215,0,.025);}
+.rt-icon{font-size:1.15rem;margin-bottom:6px;}
+.rt-val{
+  font-family:'Orbitron',sans-serif;font-size:1.3rem;font-weight:900;
+  color:var(--gold);line-height:1;margin-bottom:5px;
+  text-shadow:0 0 20px rgba(255,215,0,.38);
+}
+.rt-val.green{color:var(--green);text-shadow:0 0 20px rgba(0,230,118,.38);}
+.rt-val.red  {color:var(--red);  text-shadow:0 0 20px rgba(232,0,61,.38);}
+.rt-lbl{font-size:.58rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;}
+.rt-live{display:inline-flex;align-items:center;gap:4px;}
+.rtdot{width:5px;height:5px;background:var(--green);border-radius:50%;display:inline-block;animation:bdotPulse 1.3s ease-in-out infinite;}
+
+/* ─── JACKPOT ────────────────────────────── */
+.jp-bar{
+  position:relative;z-index:2;text-align:center;padding:52px var(--sp-md);
+  background:linear-gradient(160deg,rgba(255,165,0,.055),rgba(232,0,61,.04));
+  border-bottom:1px solid rgba(255,215,0,.08);overflow:hidden;
+}
+.jp-bar::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 42px,rgba(255,215,0,.012) 42px,rgba(255,215,0,.012) 43px);}
+.jp-label{font-size:.66rem;letter-spacing:4px;color:var(--gold2);text-transform:uppercase;font-weight:800;margin-bottom:8px;display:block;}
+.jp-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.1rem,2.5vw,1.7rem);color:var(--muted);margin-bottom:10px;letter-spacing:2px;}
+.jp-amount{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;line-height:1;letter-spacing:-2px;
+  background:linear-gradient(150deg,#fff,var(--gold),var(--gold2),#fff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-size:220% auto;animation:textShine 2.2s linear infinite;
+  filter:drop-shadow(0 0 44px rgba(255,215,0,.48));
+}
+.jp-sub{font-size:.7rem;color:var(--muted);margin-top:12px;letter-spacing:2px;display:block;}
+
+/* ─── WINNER FEED ────────────────────────── */
+.wf-wrap{
+  position:relative;z-index:2;background:rgba(3,3,10,.88);
+  border-bottom:1px solid rgba(255,255,255,.05);overflow:hidden;padding:13px 0;
+}
+.wf-label{
+  position:absolute;left:0;top:0;bottom:0;display:flex;align-items:center;
+  padding:0 22px 0 16px;background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;font-size:.6rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;
+  z-index:2;white-space:nowrap;
+  clip-path:polygon(0 0,100% 0,calc(100% - 14px) 100%,0 100%);
+}
+.wf-track{display:flex;animation:wfScroll 48s linear infinite;padding-left:170px;white-space:nowrap;}
+.wf-track:hover{animation-play-state:paused;}
+@keyframes wfScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.wf-item{display:inline-flex;align-items:center;gap:10px;padding:4px 26px;border-right:1px solid rgba(255,255,255,.05);flex-shrink:0;}
+.wf-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#000;flex-shrink:0;}
+.wf-name{font-size:.76rem;font-weight:700;color:var(--text);}
+.wf-game{font-size:.64rem;color:var(--muted);}
+.wf-amt{font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:900;}
+
+/* ─── STATS BAR ──────────────────────────── */
+.stats-bar{
+  position:relative;z-index:2;
+  background:linear-gradient(90deg,rgba(255,215,0,.06),rgba(255,165,0,.03),rgba(255,215,0,.06));
+  border-top:1px solid rgba(255,215,0,.1);border-bottom:1px solid rgba(255,215,0,.06);
+  padding:var(--sp-lg) var(--sp-lg);display:flex;justify-content:center;flex-wrap:wrap;
+}
+.stat{text-align:center;padding:0 var(--sp-xl);border-right:1px solid rgba(255,255,255,.06);}
+.stat:last-child{border-right:none;}
+.stat-icon{font-size:1.25rem;display:block;margin-bottom:8px;}
+.stat-num{
+  font-family:'Orbitron',sans-serif;font-size:2.2rem;font-weight:900;
+  color:var(--gold);display:block;line-height:1;
+  text-shadow:0 0 32px rgba(255,215,0,.42);
+}
+.stat-lbl{font-size:.64rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:6px;display:block;font-weight:700;}
+
+/* ─── ACTIVITY BAR ───────────────────────── */
+.act-bar{
+  position:relative;z-index:2;
+  background:rgba(0,230,118,.04);
+  border-top:1px solid rgba(0,230,118,.1);border-bottom:1px solid rgba(0,230,118,.07);
+  padding:16px var(--sp-xl);display:flex;align-items:center;justify-content:center;gap:var(--sp-xl);flex-wrap:wrap;
+}
+.act-item{display:flex;align-items:center;gap:10px;font-size:.8rem;font-weight:600;}
+.act-num{font-family:'Orbitron',sans-serif;color:var(--green);font-weight:900;font-size:.9rem;}
+.act-txt{color:var(--muted);}
+
+/* ─── SECTIONS ───────────────────────────── */
+section{position:relative;z-index:2;padding:var(--sp-2x) var(--sp-xl);}
+.sec-hdr{max-width:1200px;margin:0 auto var(--sp-xl);}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:.66rem;color:var(--gold);letter-spacing:4px;text-transform:uppercase;font-weight:800;margin-bottom:16px;}
+.sec-label::before{content:'';width:28px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,5vw,5.5rem);line-height:.9;margin-bottom:20px;letter-spacing:1px;}
+.sec-title .acc{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.sec-sub{color:var(--muted);max-width:480px;line-height:2;font-size:.95rem;font-weight:500;}
+
+.sec-div{position:relative;z-index:2;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,.14),transparent);}
+
+/* ─── GAME CARDS ─────────────────────────── */
+#games{background:var(--dark2);background-image:radial-gradient(ellipse 60% 45% at 85% 55%,rgba(255,215,0,.04),transparent);}
+.games-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:var(--sp-sm);max-width:1200px;margin:0 auto;
+}
+.game-card{
+  /* glassmorphism */
+  background:var(--card);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid var(--gb);
+  border-radius:var(--r-md);
+  padding:var(--sp-lg) var(--sp-lg);
+  cursor:none;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+  /* gradient border glow on hover via box-shadow */
+  transition:transform .38s var(--ease-out),box-shadow .38s,background .3s,border-color .3s;
+}
+/* top gradient border */
+.game-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  transform:scaleX(0);transition:transform .42s;transform-origin:left;border-radius:var(--r-md) var(--r-md) 0 0;
+}
+/* radial glow inside */
+.game-card::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(ellipse at 50% -10%,rgba(255,215,0,.12),transparent 65%);
+  opacity:0;transition:opacity .42s;pointer-events:none;
+}
+/* lightning sweep */
+.game-card .ltng{
+  position:absolute;top:-50%;left:-65%;width:35%;height:200%;
+  background:linear-gradient(to right,transparent,rgba(255,215,0,.09),transparent);
+  transform:skewX(-18deg);transition:left .7s var(--ease-out);pointer-events:none;
+}
+.game-card:hover{
+  transform:translateY(-10px) scale(1.015);
+  box-shadow:0 0 0 1px rgba(255,215,0,.3),0 24px 48px rgba(0,0,0,.45),0 0 60px rgba(255,215,0,.1);
+  background:var(--card2);border-color:rgba(255,215,0,.25);
+}
+.game-card:hover::before{transform:scaleX(1);}
+.game-card:hover::after{opacity:1;}
+.game-card:hover .ltng{left:140%;}
+.game-card:hover .gi{transform:scale(1.22) rotate(-6deg);filter:drop-shadow(0 0 22px rgba(255,215,0,.65));}
+.game-card:hover .gpb{opacity:1;transform:translateY(0);}
+
+.gnum{font-family:'Orbitron',sans-serif;font-size:.58rem;color:rgba(255,215,0,.22);letter-spacing:2px;margin-bottom:20px;}
+.gi{font-size:3.2rem;display:block;margin-bottom:20px;transition:all .35s;}
+.gname{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:8px;color:#fff;}
+.gtag{
+  display:inline-block;padding:4px 14px;border-radius:var(--r-pill);
+  font-size:.58rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;
+}
+.tag-c{background:rgba(232,0,61,.14);color:#ff6680;border:1px solid rgba(232,0,61,.2);}
+.tag-l{background:rgba(0,191,255,.11);color:var(--blue);border:1px solid rgba(0,191,255,.2);}
+.tag-h{background:rgba(255,165,0,.14);color:var(--gold2);border:1px solid rgba(255,165,0,.2);}
+.gdesc{color:var(--muted);font-size:.88rem;line-height:1.75;margin-bottom:18px;flex:1;font-weight:500;}
+.godds{font-family:'Orbitron',sans-serif;font-size:.66rem;color:var(--green);margin-bottom:16px;border-top:1px solid rgba(255,255,255,.06);padding-top:14px;letter-spacing:1px;}
+.gpb{
+  align-self:flex-start;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#000;padding:10px 24px;border-radius:var(--r-pill);
+  font-size:.7rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;
+  opacity:0;transform:translateY(10px);transition:all .35s var(--ease-out);
+  border:none;display:inline-block;
+  box-shadow:0 0 16px rgba(255,165,0,.4);
+}
+
+/* ─── SPORTS ─────────────────────────────── */
+#sports{background:var(--dark3);background-image:radial-gradient(ellipse 50% 55% at 18% 55%,rgba(0,230,118,.04),transparent);}
+.feat-match{
+  max-width:1200px;margin:0 auto var(--sp-lg);
+  background:var(--card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(0,230,118,.15);border-radius:var(--r-md);padding:var(--sp-lg) var(--sp-xl);
+  display:flex;align-items:center;justify-content:space-between;gap:var(--sp-lg);
+  flex-wrap:wrap;position:relative;overflow:hidden;
+}
+.feat-match::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,230,118,.04),transparent);pointer-events:none;border-radius:inherit;}
+.match-lbl{font-size:.6rem;color:var(--green);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-weight:800;display:flex;align-items:center;gap:7px;}
+.match-teams{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;letter-spacing:2px;color:#fff;}
+.match-vs{color:var(--gold);margin:0 10px;}
+.odds-row{display:flex;gap:12px;flex-wrap:wrap;}
+.odd-btn{
+  background:rgba(255,215,0,.08);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,215,0,.2);color:var(--gold);
+  padding:13px 24px;border-radius:var(--r-sm);
+  font-family:'Orbitron',sans-serif;font-size:.8rem;font-weight:700;
+  cursor:none;transition:all .3s;position:relative;overflow:hidden;
+}
+.odd-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 35%,rgba(255,215,0,.12),transparent 65%);transform:translateX(-100%);transition:transform .55s;}
+.odd-btn:hover::before{transform:translateX(100%);}
+.odd-btn:hover{background:rgba(255,215,0,.18);border-color:var(--gold);transform:scale(1.07);box-shadow:0 0 20px rgba(255,215,0,.25);}
+.odd-btn.active{background:rgba(255,215,0,.18);border-color:var(--gold);box-shadow:0 0 20px rgba(255,215,0,.3);}
+.odd-val{display:inline-block;transition:transform .22s,color .22s;}
+.odd-val.bump{animation:oddBump .32s ease;}
+@keyframes oddBump{0%,100%{transform:scale(1)}50%{transform:scale(1.4);color:var(--green)}}
+.match-timer{font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:900;color:var(--red);text-shadow:0 0 22px rgba(232,0,61,.55);}
+
+.sports-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-sm);max-width:1200px;margin:0 auto;}
+.sport-card{
+  background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--gb);border-radius:var(--r-md);
+  padding:var(--sp-lg) var(--sp-md);text-align:center;
+  transition:transform .35s var(--ease-out),box-shadow .35s,border-color .35s;
+  cursor:none;position:relative;overflow:hidden;
+}
+.sport-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,230,118,.06),transparent);opacity:0;transition:opacity .32s;border-radius:inherit;}
+.sport-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--blue));transform:scaleX(0);transition:transform .4s;border-radius:0 0 var(--r-md) var(--r-md);}
+.sport-card .ltng{position:absolute;top:-50%;left:-65%;width:35%;height:200%;background:linear-gradient(to right,transparent,rgba(0,230,118,.08),transparent);transform:skewX(-18deg);transition:left .7s var(--ease-out);pointer-events:none;}
+.sport-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 0 0 1px rgba(0,230,118,.28),0 20px 44px rgba(0,0,0,.4),0 0 40px rgba(0,230,118,.08);border-color:rgba(0,230,118,.25);}
+.sport-card:hover::before{opacity:1;}
+.sport-card:hover::after{transform:scaleX(1);}
+.sport-card:hover .ltng{left:140%;}
+.sport-card:hover .sp-icon{transform:scale(1.28);}
+.sp-icon{font-size:2.7rem;margin-bottom:14px;display:block;transition:transform .32s;}
+.sp-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;color:var(--green);}
+.sp-meta{font-size:.68rem;color:var(--muted);margin-top:6px;letter-spacing:.5px;}
+.live-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px;}
+.live-dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:bdotPulse 1.3s ease-in-out infinite;}
+.live-txt{font-size:.6rem;color:var(--red);font-weight:900;letter-spacing:2px;}
+
+/* ─── WHY CHOOSE US ──────────────────────── */
+#why{background:var(--dark2);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-md);max-width:1200px;margin:0 auto;}
+.why-card{
+  background:var(--card);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--gb);border-radius:var(--r-md);
+  padding:var(--sp-xl) var(--sp-lg);position:relative;overflow:hidden;
+  transition:transform .35s var(--ease-out),box-shadow .35s,border-color .35s;
+}
+.why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));transform:scaleX(0);transition:transform .42s;transform-origin:left;border-radius:var(--r-md) var(--r-md) 0 0;}
+.why-card:hover::before{transform:scaleX(1);}
+.why-card:hover{transform:translateY(-6px);box-shadow:0 0 0 1px rgba(255,215,0,.2),0 20px 44px rgba(0,0,0,.4);border-color:rgba(255,215,0,.18);}
+.why-icon{font-size:2.4rem;margin-bottom:18px;display:block;}
+.why-ttl{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:.4px;}
+.why-desc{color:var(--muted);font-size:.88rem;line-height:1.85;font-weight:500;}
+
+/* ─── ANIMATIONS SHOWCASE ────────────────── */
+#anim-sec{background:var(--dark3);}
+.anim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-sm);max-width:1200px;margin:0 auto;}
+.anim-card{
+  background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--gb);border-radius:var(--r-md);
+  padding:var(--sp-lg) var(--sp-md);text-align:center;overflow:hidden;
+}
+.anim-display{height:86px;display:flex;align-items:center;justify-content:center;font-size:3.2rem;margin-bottom:18px;}
+.anim-ttl{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:2px;color:var(--gold);margin-bottom:8px;}
+.anim-desc{font-size:.76rem;color:var(--muted);line-height:1.7;}
+.spin-slow{animation:spinIt 4s linear infinite;}
+.spin-fast{animation:spinIt .85s linear infinite;}
+@keyframes spinIt{to{transform:rotate(360deg)}}
+.float-bob{animation:floatBob 2.2s ease-in-out infinite alternate;}
+@keyframes floatBob{from{transform:translateY(-7px)}to{transform:translateY(7px)}}
+.card-flip{animation:cardFlip 1.6s ease-in-out infinite;}
+@keyframes cardFlip{0%,100%{transform:rotateY(0)}50%{transform:rotateY(180deg)}}
+.bounce-a{animation:bounceA 1s ease-in-out infinite alternate;}
+@keyframes bounceA{from{transform:scale(.88)}to{transform:scale(1.12)}}
+
+/* ─── DOWNLOAD ───────────────────────────── */
+#download{background:var(--dark2);background-image:radial-gradient(ellipse 65% 80% at 50% 50%,rgba(255,165,0,.05),transparent);}
+.dl-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2x);align-items:center;}
+.dl-phone{
+  width:226px;height:460px;margin:0 auto;
+  background:rgba(12,12,32,.92);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,215,0,.2);border-radius:38px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  box-shadow:0 0 88px rgba(255,165,0,.12),inset 0 0 44px rgba(255,215,0,.02);
+  animation:phoneFloat 4.2s ease-in-out infinite alternate;
+}
+@keyframes phoneFloat{from{transform:translateY(-9px) rotate(-1.2deg)}to{transform:translateY(9px) rotate(1.2deg)}}
+.dl-phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:72px;height:5px;background:rgba(255,255,255,.1);border-radius:0 0 6px 6px;}
+.dl-phone::after{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(255,255,255,.03) 0%,transparent 55%,rgba(255,255,255,.01) 100%);pointer-events:none;}
+.ph-screen{font-size:3.6rem;margin-bottom:12px;}
+.ph-logo{font-family:'Orbitron',sans-serif;font-size:.82rem;color:var(--gold);letter-spacing:3px;}
+.ph-tag{font-size:.6rem;color:var(--muted);margin-top:5px;letter-spacing:1px;text-align:center;padding:0 22px;}
+.ph-glow{position:absolute;width:320px;height:320px;background:radial-gradient(circle,rgba(255,165,0,.1),transparent 70%);border-radius:50%;pointer-events:none;}
+
+.dl-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:var(--sp-lg);}
+.dl-feat{
+  display:flex;align-items:center;gap:16px;
+  background:rgba(255,215,0,.04);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,215,0,.08);
+  padding:14px 20px;border-radius:var(--r-sm);
+  transition:all .28s;
+}
+.dl-feat:hover{border-color:rgba(255,215,0,.22);background:rgba(255,215,0,.08);}
+.dl-fi{font-size:1.15rem;}
+.dl-ft{font-size:.9rem;font-weight:600;letter-spacing:.4px;}
+
+.dl-btn{
+  display:inline-block;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--gold),var(--gold2),var(--gold3));
+  color:#000;padding:20px 52px;border-radius:var(--r-pill);
+  font-weight:900;font-size:.95rem;letter-spacing:2px;text-transform:uppercase;
+  box-shadow:0 0 44px rgba(255,165,0,.32),0 6px 20px rgba(0,0,0,.35);
+  transition:transform .3s var(--ease-out),box-shadow .3s;
+}
+.dl-btn::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,.28),transparent 70%);transform:translateX(-100%);transition:transform .6s;}
+.dl-btn:hover::before{transform:translateX(100%);}
+.dl-btn:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 0 72px rgba(255,215,0,.62),0 12px 30px rgba(0,0,0,.4);}
+.dl-meta{color:var(--muted);font-size:.74rem;margin-top:14px;letter-spacing:.5px;display:block;}
+
+/* ─── TRUST BAR ──────────────────────────── */
+.trust-bar{
+  position:relative;z-index:2;
+  background:rgba(3,3,10,.94);backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);
+  padding:22px var(--sp-xl);display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:0;
+}
+.trust-item{
+  display:flex;align-items:center;gap:10px;
+  padding:0 var(--sp-lg);border-right:1px solid rgba(255,255,255,.06);
+  font-size:.74rem;font-weight:700;letter-spacing:1px;color:var(--muted);transition:color .25s;
+}
+.trust-item:last-child{border-right:none;}
+.trust-item:hover{color:var(--text);}
+
+/* ─── FAQ ────────────────────────────────── */
+#faq{background:var(--dark3);}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:var(--sp-xs);}
+.faq-item{
+  background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--gb);border-radius:var(--r-sm);overflow:hidden;transition:border-color .3s;
+}
+.faq-item.open{border-color:rgba(255,215,0,.22);}
+.faq-q{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:20px var(--sp-lg);background:none;border:none;color:var(--text);
+  font-family:'Rajdhani',sans-serif;font-size:.96rem;font-weight:700;letter-spacing:.4px;
+  text-align:left;cursor:none;gap:20px;transition:color .25s;
+}
+.faq-item.open .faq-q{color:var(--gold);}
+.faq-icon{font-family:'Orbitron',sans-serif;font-size:.85rem;color:var(--gold);transition:transform .4s;flex-shrink:0;font-weight:900;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .52s var(--ease-out);}
+.faq-a-inner{padding:0 var(--sp-lg) 20px;color:var(--muted);font-size:.88rem;line-height:1.95;font-weight:500;border-top:1px solid rgba(255,255,255,.05);padding-top:14px;}
+.faq-item.open .faq-a{max-height:300px;}
+
+/* ─── LEGAL PAGES ────────────────────────── */
+.page-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(3,3,10,.98);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);overflow-y:auto;}
+.page-overlay.active{display:block;animation:fadeIn .32s ease;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.page-inner{max-width:860px;margin:0 auto;padding:90px var(--sp-xl) var(--sp-xl);animation:slideUp .42s var(--ease-out);}
+@keyframes slideUp{from{transform:translateY(26px);opacity:0}to{transform:translateY(0);opacity:1}}
+.page-close{
+  position:fixed;top:24px;right:28px;
+  background:rgba(255,255,255,.05);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.1);color:var(--muted);
+  width:48px;height:48px;border-radius:var(--r-pill);
+  font-size:1rem;cursor:none;transition:all .25s;
+  display:flex;align-items:center;justify-content:center;z-index:501;
+}
+.page-close:hover{background:rgba(232,0,61,.2);color:var(--red);border-color:var(--red);}
+.page-logo{font-family:'Orbitron',sans-serif;font-size:.85rem;color:var(--gold);letter-spacing:3px;margin-bottom:var(--sp-lg);opacity:.38;display:block;}
+.page-content h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,5vw,4.2rem);color:#fff;margin-bottom:4px;line-height:1;}
+.page-content h1 span{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.page-content .updated{font-size:.68rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:var(--sp-lg);display:block;margin-top:8px;}
+.page-divider{height:1px;background:linear-gradient(90deg,rgba(255,215,0,.28),transparent);margin:var(--sp-lg) 0;}
+.page-content h2{font-size:1.1rem;color:var(--gold2);margin:var(--sp-lg) 0 10px;font-weight:700;font-family:'Syne',sans-serif;display:flex;align-items:center;gap:8px;}
+.page-content h2::before{content:'//';color:rgba(255,165,0,.28);font-family:'Orbitron',sans-serif;font-size:.6rem;}
+.page-content p,.page-content li{color:var(--muted);line-height:2;font-size:.9rem;margin-bottom:8px;font-weight:500;}
+.page-content ul{padding-left:0;list-style:none;}
+.page-content li{padding:8px 14px 8px 28px;position:relative;border-left:2px solid rgba(255,215,0,.1);margin-bottom:6px;border-radius:0 var(--r-sm) var(--r-sm) 0;}
+.page-content li::before{content:'>';position:absolute;left:9px;color:var(--gold);font-weight:700;}
+.page-hl{background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.14);border-left:3px solid var(--gold);padding:14px 18px;margin:18px 0;font-size:.86rem;color:var(--text);font-weight:600;border-radius:0 var(--r-sm) var(--r-sm) 0;}
+.contact-link{color:var(--gold);font-weight:700;}
+
+/* deletion form */
+.del-form{display:flex;flex-direction:column;gap:12px;margin-top:22px;}
+.del-form input,.del-form textarea,.del-form select{
+  width:100%;background:rgba(255,255,255,.03);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.1);color:#fff;
+  padding:15px 18px;border-radius:var(--r-sm);
+  font-family:'Rajdhani',sans-serif;font-size:.92rem;outline:none;transition:border-color .25s,background .25s;
+}
+.del-form input:focus,.del-form textarea:focus,.del-form select:focus{border-color:var(--gold);background:rgba(255,215,0,.03);}
+.del-form select option{background:var(--dark3);}
+.del-form textarea{height:106px;resize:none;}
+.del-warn{background:rgba(232,0,61,.07);border:1px solid rgba(232,0,61,.2);border-left:3px solid var(--red);padding:14px 18px;font-size:.84rem;color:#ff6680;font-weight:600;border-radius:0 var(--r-sm) var(--r-sm) 0;}
+.del-submit{
+  background:linear-gradient(135deg,var(--red),var(--red2));border:none;color:#fff;
+  padding:16px 40px;border-radius:var(--r-pill);
+  font-weight:800;font-size:.9rem;cursor:none;letter-spacing:2px;text-transform:uppercase;
+  transition:transform .28s var(--ease-out),box-shadow .28s;align-self:flex-start;
+  box-shadow:0 0 22px rgba(232,0,61,.28);
+}
+.del-submit:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 0 40px rgba(232,0,61,.52);}
+#del-success{display:none;margin-top:18px;background:rgba(0,230,118,.07);border:1px solid rgba(0,230,118,.18);border-left:3px solid var(--green);padding:14px 18px;color:var(--green);font-weight:600;font-size:.88rem;border-radius:0 var(--r-sm) var(--r-sm) 0;}
+
+/* ─── FOOTER ─────────────────────────────── */
+footer{position:relative;z-index:2;background:var(--dark);border-top:1px solid rgba(255,255,255,.04);padding:var(--sp-2x) var(--sp-xl) var(--sp-xl);}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,.28),transparent);}
+.footer-grid{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:var(--sp-xl);max-width:1200px;margin:0 auto;}
+.footer-logo{font-family:'Orbitron',sans-serif;font-size:1.38rem;color:var(--gold);font-weight:900;margin-bottom:14px;letter-spacing:3px;filter:drop-shadow(0 0 8px rgba(255,215,0,.38));display:block;}
+.footer-about{color:var(--muted);font-size:.84rem;line-height:2;max-width:290px;font-weight:500;}
+.footer-trust{display:flex;flex-direction:column;gap:10px;margin-top:var(--sp-md);}
+.ft-item{display:flex;align-items:center;gap:9px;font-size:.73rem;color:var(--muted);}
+.footer-col h4{font-family:'Orbitron',sans-serif;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:700;}
+.footer-col a{display:flex;align-items:center;color:var(--muted);font-size:.84rem;margin-bottom:12px;transition:all .25s;cursor:none;font-weight:500;}
+.footer-col a::before{content:'>';margin-right:7px;opacity:0;transition:all .25s;color:var(--gold);}
+.footer-col a:hover{color:var(--gold);padding-left:5px;}
+.footer-col a:hover::before{opacity:1;}
+.footer-bot{
+  position:relative;z-index:2;background:var(--dark);
+  border-top:1px solid rgba(255,255,255,.04);padding:24px var(--sp-xl);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+}
+.footer-bot p{color:var(--muted);font-size:.74rem;letter-spacing:.4px;}
+.age-badge{
+  background:rgba(232,0,61,.1);border:1px solid rgba(232,0,61,.24);
+  color:#ff6680;padding:6px 16px;border-radius:var(--r-pill);
+  font-size:.68rem;font-weight:800;letter-spacing:2px;
+}
+
+/* ─── iOS GLASS BOTTOM NAV ───────────────── */
+.bnav{
+  display:none;
+  position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:300;
+  background:rgba(8,8,24,.68);
+  backdrop-filter:blur(44px) saturate(200%);
+  -webkit-backdrop-filter:blur(44px) saturate(200%);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-pill);padding:10px 24px;
+  box-shadow:0 10px 40px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.08) inset,0 1px 0 rgba(255,255,255,.12) inset;
+  min-width:330px;align-items:center;gap:6px;
+}
+.bn-item{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;flex:1;padding:7px 10px;border-radius:22px;
+  background:none;border:none;color:rgba(255,255,255,.42);
+  font-family:'Rajdhani',sans-serif;font-size:.54rem;font-weight:700;
+  letter-spacing:.5px;text-transform:uppercase;transition:all .3s;cursor:none;min-width:54px;
+}
+.bn-icon{font-size:1.3rem;transition:transform .3s;}
+.bn-item.active{background:rgba(255,215,0,.14);color:var(--gold);}
+.bn-item.active .bn-icon{transform:scale(1.12);}
+.bn-item:hover{color:rgba(255,215,0,.78);}
+.bn-div{width:1px;height:30px;background:rgba(255,255,255,.1);flex-shrink:0;}
+
+/* ─── WHATSAPP FAB ───────────────────────── */
+.wa-fab{
+  position:fixed;bottom:112px;right:28px;z-index:250;
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:flex;align-items:center;justify-content:center;font-size:1.65rem;
+  cursor:none;text-decoration:none;
+  box-shadow:0 4px 26px rgba(37,211,102,.48);
+  animation:waPulse 2.6s ease-in-out infinite;transition:transform .3s;
+}
+.wa-fab:hover{transform:scale(1.14);}
+.wa-tip{
+  position:absolute;right:68px;top:50%;transform:translateY(-50%);
+  background:rgba(8,8,24,.97);backdrop-filter:blur(12px);
+  border:1px solid rgba(37,211,102,.3);color:#fff;
+  white-space:nowrap;padding:9px 16px;border-radius:var(--r-sm);
+  font-size:.76rem;font-weight:700;opacity:0;transition:opacity .3s;pointer-events:none;
+}
+.wa-fab:hover .wa-tip{opacity:1;}
+@keyframes waPulse{
+  0%,100%{box-shadow:0 4px 26px rgba(37,211,102,.48),0 0 0 0 rgba(37,211,102,.38);}
+  50%    {box-shadow:0 4px 26px rgba(37,211,102,.48),0 0 0 16px rgba(37,211,102,0);}
+}
+
+/* ─── UTILITY ANIMATIONS ─────────────────── */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .82s var(--ease-out),transform .82s var(--ease-out);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+.coin{position:fixed;top:-60px;animation:coinFall linear forwards;pointer-events:none;z-index:999;}
+@keyframes coinFall{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}100%{transform:translateY(110vh) rotate(720deg) scale(.45);opacity:0}}
+.toast{
+  position:fixed;bottom:102px;right:28px;
+  background:rgba(8,8,24,.97);backdrop-filter:blur(18px);
+  border:1px solid rgba(255,215,0,.28);border-left:3px solid var(--gold);
+  color:var(--text);padding:15px 24px;border-radius:0 var(--r-sm) var(--r-sm) 0;
+  font-size:.86rem;font-weight:600;letter-spacing:.4px;z-index:900;
+  transform:translateX(140px);opacity:0;transition:all .42s var(--ease-out);
+  max-width:290px;
+}
+.toast.show{transform:translateX(0);opacity:1;}
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media(max-width:1100px){
+  .games-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:var(--sp-xl);}
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+  .anim-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:820px){
+  nav{padding:0 var(--sp-md);height:60px;}
+  .nav-links,.nav-cta{display:none;}
+  section{padding:var(--sp-xl) var(--sp-md);}
+  footer{padding:var(--sp-xl) var(--sp-md) var(--sp-lg);}
+  .footer-bot{padding:20px var(--sp-md);}
+  .stats-bar{padding:var(--sp-lg) var(--sp-sm);}
+  .stat{padding:0 var(--sp-md);}
+  .stat-num{font-size:1.7rem;}
+  .bnav{display:flex;}
+  .trust-bar{padding:18px var(--sp-md);gap:var(--sp-sm);}
+  .trust-item{padding:0 var(--sp-md);border-right:none;}
+  .wa-fab{bottom:104px;}
+  .toast{bottom:158px;}
+  .games-grid{grid-template-columns:1fr;}
+  .sports-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:1fr;}
+  .anim-grid{grid-template-columns:repeat(2,1fr);}
+  .dl-wrap{grid-template-columns:1fr;}
+  .dl-phone{display:none;}
+  .footer-grid{grid-template-columns:1fr;gap:var(--sp-lg);}
+  .feat-match{padding:var(--sp-md);}
+  .act-bar{padding:14px var(--sp-md);gap:var(--sp-md);}
+  .hero-btns{flex-direction:column;align-items:stretch;max-width:320px;margin-left:auto;margin-right:auto;}
+  .btn-primary,.btn-secondary{text-align:center;}
+  .cur,.cur-ring{display:none;}
+  body{cursor:auto;}
+  button,a{cursor:pointer;}
+  .bnav{min-width:calc(100vw - 32px);}
+}
+@media(max-width:500px){
+  .hero-title{font-size:clamp(4rem,20vw,6rem);}
+  .sports-grid{grid-template-columns:1fr 1fr;}
+  .jp-amount{font-size:clamp(2.2rem,10vw,3.5rem);}
+  .sec-title{font-size:clamp(2.4rem,9vw,3.8rem);}
+  .stat{padding:0 var(--sp-sm);}
+  .stat-num{font-size:1.5rem;}
+  .av-ticker{flex-wrap:wrap;justify-content:center;text-align:center;}
+  .feat-match{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">⚡ LUCKYZONE</div>
+  <div class="ld-track"><div class="ld-bar"></div></div>
+  <div class="ld-txt">Loading Pakistan's #1 Platform...</div>
+</div>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<canvas id="bgCanvas"></canvas>
+
+<!-- ══ NAV ══════════════════════════════════ -->
+<nav id="mainNav">
+  <div class="logo">⚡ LuckyZone</div>
+  <ul class="nav-links">
+    <li><a href="#games">Games</a></li>
+    <li><a href="#sports">Sports</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a onclick="openPage('privacy')">Privacy</a></li>
+    <li><a onclick="openPage('tos')">Terms</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'})">Download App</button>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="orb1"></div><div class="orb2"></div>
+  <div class="float-cards" id="floatCards"></div>
+
+  <div class="hero-badge"><span class="bdot"></span>Pakistan's #1 Gaming Platform</div>
+  <div class="hero-eye">Play &nbsp;·&nbsp; Win &nbsp;·&nbsp; Repeat</div>
+  <h1 class="hero-title"><span class="l1">Lucky</span><span class="l2">Zone</span></h1>
+  <p class="hero-sub">Where every card dealt, every spin taken, and every match watched puts you in the zone. Casino games and live sports betting — one electric platform.</p>
+  <div class="hero-btns">
+    <a href="https://luckyzone.life/join/9F21A5C2" target="_blank" class="btn-primary">🌐 &nbsp;Play Online Now</a>
+    <a href="https://github.com/TxDevelopers/luckyzone-app/releases/download/v1.0/Lucky.zone.apk" class="btn-secondary">📲 &nbsp;Download APK</a>
+  </div>
+  <div class="av-ticker">
+    <span class="av-plane">✈️</span>
+    <span class="av-label">Aviator Live</span>
+    <span class="av-val" id="avVal">1.00x</span>
+    <span class="av-label">Current Multiplier</span>
+  </div>
+</section>
+
+<!-- ══ REALTIME PANEL ════════════════════════ -->
+<div class="rt-panel">
+  <div class="rt-inner">
+    <div class="rt-stat"><span class="rt-icon">🟢</span><span class="rt-val green" id="rtOnline">4,821</span><span class="rt-lbl rt-live"><span class="rtdot"></span>Online Now</span></div>
+    <div class="rt-stat"><span class="rt-icon">💰</span><span class="rt-val" id="rtWon">PKR 2.4M</span><span class="rt-lbl">Won Today</span></div>
+    <div class="rt-stat"><span class="rt-icon">🎮</span><span class="rt-val" id="rtGames">38</span><span class="rt-lbl">Games Live</span></div>
+    <div class="rt-stat"><span class="rt-icon">⚽</span><span class="rt-val" id="rtSports">14</span><span class="rt-lbl">Live Matches</span></div>
+    <div class="rt-stat"><span class="rt-icon">⚡</span><span class="rt-val green" id="rtDep">142</span><span class="rt-lbl">Deposits/Hr</span></div>
+    <div class="rt-stat"><span class="rt-icon">🏆</span><span class="rt-val" id="rtWin">89</span><span class="rt-lbl">Winners Today</span></div>
+    <div class="rt-stat"><span class="rt-icon">📲</span><span class="rt-val red" id="rtJoin">23</span><span class="rt-lbl">Joined Last Hour</span></div>
+  </div>
+</div>
+
+<!-- ══ JACKPOT ═══════════════════════════════ -->
+<div class="jp-bar">
+  <span class="jp-label">Current Network Jackpot</span>
+  <div class="jp-title">Progressive Jackpot Pool</div>
+  <div class="jp-amount" id="jpAmt">PKR 12,847,432</div>
+  <span class="jp-sub">Updates every few seconds · Win it all on any eligible game</span>
+</div>
+
+<!-- ══ WINNER FEED ════════════════════════════ -->
+<div class="wf-wrap">
+  <div class="wf-label">🏆 Live Winners</div>
+  <div class="wf-track" id="wfTrack"></div>
+</div>
+
+<!-- ══ STATS BAR ══════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stat reveal"><span class="stat-icon">🎮</span><span class="stat-num" data-target="2500000">0</span><span class="stat-lbl">Active Players</span></div>
+  <div class="stat reveal"><span class="stat-icon">🎯</span><span class="stat-num" data-target="50">0</span><span class="stat-lbl">Games &amp; Sports</span></div>
+  <div class="stat reveal"><span class="stat-icon">⚡</span><span class="stat-num" data-target="99">0</span><span class="stat-lbl">% Uptime</span></div>
+  <div class="stat reveal"><span class="stat-icon">🎧</span><span class="stat-num" data-target="24">0</span><span class="stat-lbl">Hr Support</span></div>
+</div>
+<div class="sec-div"></div>
+
+<!-- ══ ACTIVITY BAR ═══════════════════════════ -->
+<div class="act-bar">
+  <div class="act-item"><span class="act-num" id="act1">23</span><span class="act-txt">players joined last hour</span></div>
+  <div class="act-item"><span class="act-num" id="act2">PKR 142,000</span><span class="act-txt">deposited in last 30 mins</span></div>
+  <div class="act-item"><span class="act-num" id="act3">11</span><span class="act-txt">jackpots hit today</span></div>
+  <div class="act-item"><span class="act-num" id="act4">4,821</span><span class="act-txt">players online right now</span></div>
+</div>
+
+<!-- ══ GAMES ══════════════════════════════════ -->
+<section id="games">
+  <div class="sec-hdr reveal">
+    <div class="sec-label">Casino</div>
+    <h2 class="sec-title">Play The <span class="acc">Best Games</span></h2>
+    <p class="sec-sub">From high-octane Aviator to classic Teen Patti — your favourite games, perfected for every type of player in Pakistan.</p>
+  </div>
+  <div class="games-grid">
+    <div class="game-card reveal"><div class="ltng"></div><div class="gnum">01</div><span class="gi">✈️</span><div class="gname">Aviator</div><span class="gtag tag-h">🔥 Hot</span><p class="gdesc">Watch the multiplier soar. Cash out before it crashes. Pure undiluted adrenaline on every single round.</p><div class="godds">UP TO 1000x MULTIPLIER</div><button class="gpb">Play Now →</button></div>
+    <div class="game-card reveal"><div class="ltng"></div><div class="gnum">02</div><span class="gi">🃏</span><div class="gname">Teen Patti</div><span class="gtag tag-c">Casino</span><p class="gdesc">Pakistan's most loved card game. Bluff, raise, and win big at live tables with players nationwide.</p><div class="godds">♥ ♠ ♦ ♣ &nbsp;LIVE TABLES</div><button class="gpb">Play Now →</button></div>
+    <div class="game-card reveal"><div class="ltng"></div><div class="gnum">03</div><span class="gi">🎰</span><div class="gname">Slots</div><span class="gtag tag-c">Casino</span><p class="gdesc">Dozens of themed slot machines with massive jackpots and daily free spins to keep you winning.</p><div class="godds">JACKPOT UP TO PKR 5,000,000</div><button class="gpb">Play Now →</button></div>
+    <div class="game-card reveal"><div class="ltng"></div><div class="gnum">04</div><span class="gi">🎲</span><div class="gname">Andar Bahar</div><span class="gtag tag-c">Casino</span><p class="gdesc">50/50 odds, infinite excitement. Pick your side and watch the cards reveal your fate in seconds.</p><div class="godds">INSTANT RESULTS</div><button class="gpb">Play Now →</button></div>
+    <div class="game-card reveal"><div class="ltng"></div><div class="gnum">05</div><span class="gi">🎯</span><div class="gname">Roulette</div><span class="gtag tag-c">Casino</span><p class="gdesc">The iconic wheel of fortune. Bet on numbers, colours, or ranges and let the wheel decide your win.</p><div class="godds">EUROPEAN &amp; AMERICAN</div><button class="gpb">Play Now →</button></div>
+    <div class="game-card reveal"><div class="ltng"></div><div class="gnum">06</div><span class="gi">🂡</span><div class="gname">Blackjack</div><span class="gtag tag-l">Live</span><p class="gdesc">Beat the dealer to 21. Live HD dealers, real cards, real stakes — stream quality that impresses every time.</p><div class="godds">LIVE DEALER 24/7</div><button class="gpb">Play Now →</button></div>
+  </div>
+</section>
+<div class="sec-div"></div>
+
+<!-- ══ SPORTS ═════════════════════════════════ -->
+<section id="sports">
+  <div class="sec-hdr reveal">
+    <div class="sec-label">Live Betting</div>
+    <h2 class="sec-title">Sports <span class="acc">Betting</span></h2>
+    <p class="sec-sub">Bet on live matches with real-time odds across all major sports. The action never stops.</p>
+  </div>
+  <div class="feat-match reveal">
+    <div>
+      <div class="match-lbl"><span class="live-dot"></span>PSL 2025 · LIVE NOW</div>
+      <div class="match-teams">Karachi Kings <span class="match-vs">VS</span> Lahore Qalandars</div>
+    </div>
+    <div class="odds-row">
+      <button class="odd-btn" onclick="placeBet(this,'KK')">KK &nbsp;<span class="odd-val">1.85</span></button>
+      <button class="odd-btn" onclick="placeBet(this,'Draw')">Draw &nbsp;<span class="odd-val">9.50</span></button>
+      <button class="odd-btn" onclick="placeBet(this,'LQ')">LQ &nbsp;<span class="odd-val">2.10</span></button>
+    </div>
+    <div class="match-timer" id="matchTimer">00:00</div>
+  </div>
+  <div class="sports-grid">
+    <div class="sport-card reveal"><div class="ltng"></div><span class="sp-icon">🏏</span><div class="sp-name">Cricket</div><div class="live-row"><span class="live-dot"></span><span class="live-txt">Live</span></div><div class="sp-meta">PSL 2025 · Asia Cup</div></div>
+    <div class="sport-card reveal"><div class="ltng"></div><span class="sp-icon">⚽</span><div class="sp-name">Football</div><div class="live-row"><span class="live-dot"></span><span class="live-txt">Live</span></div><div class="sp-meta">EPL · La Liga · Champions League</div></div>
+    <div class="sport-card reveal"><div class="ltng"></div><span class="sp-icon">🎾</span><div class="sp-name">Tennis</div><div class="sp-meta">14 Matches Today</div></div>
+    <div class="sport-card reveal"><div class="ltng"></div><span class="sp-icon">🏀</span><div class="sp-name">Basketball</div><div class="live-row"><span class="live-dot"></span><span class="live-txt">NBA Live</span></div><div class="sp-meta">6 Games Tonight</div></div>
+    <div class="sport-card reveal"><div class="ltng"></div><span class="sp-icon">🥊</span><div class="sp-name">Kabaddi</div><div class="live-row"><span class="live-dot"></span><span class="live-txt">PKL Live</span></div><div class="sp-meta">Pro Kabaddi League</div></div>
+    <div class="sport-card reveal"><div class="ltng"></div><span class="sp-icon">🏋️</span><div class="sp-name">MMA / UFC</div><div class="sp-meta">Weekend Events</div></div>
+    <div class="sport-card reveal"><div class="ltng"></div><span class="sp-icon">🏒</span><div class="sp-name">Hockey</div><div class="sp-meta">8 Matches Today</div></div>
+    <div class="sport-card reveal"><div class="ltng"></div><span class="sp-icon">🏇</span><div class="sp-name">Horse Racing</div><div class="live-row"><span class="live-dot"></span><span class="live-txt">Live Races</span></div><div class="sp-meta">Race Day Special Odds</div></div>
+  </div>
+</section>
+<div class="sec-div"></div>
+
+<!-- ══ WHY CHOOSE US ══════════════════════════ -->
+<section id="why">
+  <div class="sec-hdr reveal">
+    <div class="sec-label">Why LuckyZone</div>
+    <h2 class="sec-title">Built For <span class="acc">Winners</span></h2>
+    <p class="sec-sub">Everything you need for the ultimate experience — built from the ground up for Pakistani players.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal"><span class="why-icon">🔒</span><div class="why-ttl">Military-Grade Security</div><p class="why-desc">256-bit SSL encryption, 2FA, and real-time fraud monitoring protect every rupee in your account at all times.</p></div>
+    <div class="why-card reveal"><span class="why-icon">⚡</span><div class="why-ttl">Instant Withdrawals</div><p class="why-desc">Your winnings land within minutes. JazzCash, EasyPaisa, and bank transfer — all supported for Pakistan.</p></div>
+    <div class="why-card reveal"><span class="why-icon">🎯</span><div class="why-ttl">Certified Fair Play</div><p class="why-desc">All games use independently audited RNGs. Every result is provably fair — no tricks, no manipulation, ever.</p></div>
+    <div class="why-card reveal"><span class="why-icon">🎧</span><div class="why-ttl">24/7 Live Support</div><p class="why-desc">Real humans, not bots. Our support team is available around the clock via WhatsApp, chat, and email.</p></div>
+    <div class="why-card reveal"><span class="why-icon">📱</span><div class="why-ttl">Mobile First Design</div><p class="why-desc">Built for Pakistani mobile users. Smooth and fast, optimized even on low-bandwidth connections.</p></div>
+    <div class="why-card reveal"><span class="why-icon">🎁</span><div class="why-ttl">Daily Bonuses &amp; Rewards</div><p class="why-desc">Welcome bonus, daily cashback, referral rewards, VIP programs — the more you play, the more you earn back.</p></div>
+  </div>
+</section>
+<div class="sec-div"></div>
+
+<!-- ══ PLATFORM PREVIEWS ══════════════════════ -->
+<section id="anim-sec">
+  <div class="sec-hdr reveal" style="text-align:center;">
+    <div class="sec-label" style="justify-content:center;">Platform Previews</div>
+    <h2 class="sec-title">See It <span class="acc">In Action</span></h2>
+  </div>
+  <div class="anim-grid">
+    <div class="anim-card reveal"><div class="anim-display"><span class="spin-slow">✈️</span></div><div class="anim-ttl">Aviator Live</div><div class="anim-desc">Watch the plane soar in real time — cash out at any multiplier</div></div>
+    <div class="anim-card reveal"><div class="anim-display"><span class="card-flip">🃏</span></div><div class="anim-ttl">Teen Patti</div><div class="anim-desc">Live card dealing with real players — feel every bluff from your phone</div></div>
+    <div class="anim-card reveal"><div class="anim-display"><span class="spin-fast">🎰</span></div><div class="anim-ttl">Slot Spins</div><div class="anim-desc">Thousands of spins every minute — yours could be the jackpot</div></div>
+    <div class="anim-card reveal"><div class="anim-display"><span class="bounce-a">🏏</span></div><div class="anim-ttl">Live Cricket</div><div class="anim-desc">Ball-by-ball odds updates — bet in-play and maximise your edge</div></div>
+  </div>
+</section>
+<div class="sec-div"></div>
+
+<!-- ══ DOWNLOAD ═══════════════════════════════ -->
+<section id="download">
+  <div class="dl-wrap">
+    <div class="reveal" style="position:relative;">
+      <div class="ph-glow"></div>
+      <div class="dl-phone">
+        <div class="ph-screen">🎰</div>
+        <div class="ph-logo">⚡ LUCKYZONE</div>
+        <div class="ph-tag">Pakistan's #1 Gaming Platform</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="sec-label">Mobile App</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,4.5vw,4.8rem);line-height:.92;margin-bottom:20px;">Get The <span style="background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">App</span></h2>
+      <p style="color:var(--muted);line-height:2;margin-bottom:var(--sp-lg);font-size:.95rem;font-weight:500;">Download LuckyZone on Android and carry the full casino and sportsbook in your pocket — with exclusive app-only bonuses.</p>
+      <div class="dl-feats">
+        <div class="dl-feat"><span class="dl-fi">⚡</span><span class="dl-ft">Lightning-fast load times on any connection</span></div>
+        <div class="dl-feat"><span class="dl-fi">🎁</span><span class="dl-ft">App-exclusive 100% welcome bonus</span></div>
+        <div class="dl-feat"><span class="dl-fi">🔔</span><span class="dl-ft">Live match and big odds push notifications</span></div>
+        <div class="dl-feat"><span class="dl-fi">💳</span><span class="dl-ft">One-tap JazzCash &amp; EasyPaisa payments</span></div>
+      </div>
+      <a href="https://github.com/TxDevelopers/luckyzone-app/releases/download/v1.0/Lucky.zone.apk" class="dl-btn">⬇ &nbsp;Download APK — Free</a>
+      <span class="dl-meta">Android 5.0+ &nbsp;·&nbsp; ~28MB &nbsp;·&nbsp; No registration to explore</span>
+      <div style="margin-top:var(--sp-md);">
+        <a href="https://luckyzone.life/join/9F21A5C2" target="_blank" class="btn-secondary" style="font-size:.8rem;padding:14px 30px;">Or Play in Browser →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="sec-div"></div>
+
+<!-- ══ TRUST BAR ══════════════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-item"><span>🔒</span>SSL 256-bit Encrypted</div>
+  <div class="trust-item"><span>🛡️</span>Fair Play Certified</div>
+  <div class="trust-item"><span>💳</span>Instant Withdrawals</div>
+  <div class="trust-item"><span>🎧</span>24/7 Support</div>
+  <div class="trust-item"><span>📱</span>JazzCash &amp; EasyPaisa</div>
+</div>
+
+<!-- ══ FAQ ════════════════════════════════════ -->
+<section id="faq">
+  <div class="sec-hdr reveal" style="text-align:center;margin-bottom:48px;">
+    <div class="sec-label" style="justify-content:center;">Support</div>
+    <h2 class="sec-title">Frequently Asked <span class="acc">Questions</span></h2>
+  </div>
+  <div class="faq-list reveal">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is LuckyZone safe to play on?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes. LuckyZone uses 256-bit SSL encryption, independent RNG audits, and two-factor authentication. Your funds and personal data are protected at all times. We are fully committed to responsible gaming and player safety.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I deposit and withdraw?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">We support JazzCash, EasyPaisa, and direct bank transfer for Pakistani players. Deposits are instant. Withdrawals are processed within minutes to a few hours depending on your selected method.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Can I play on my phone?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Absolutely. Download our Android APK for the best mobile experience, or play in your browser — both work perfectly on any smartphone or tablet. The app is optimized for Pakistani mobile networks including Jazz, Telenor, and Zong.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Are the games fair?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Every casino game on LuckyZone uses independently certified Random Number Generators. All results are provably random and tamper-proof. We have zero tolerance for rigged outcomes — fair play is our core promise.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What is the welcome bonus?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">New players receive a 100% match bonus on their first deposit up to PKR 10,000. App users receive an additional exclusive bonus. Wagering requirements apply — see the promotions section in the app for full terms.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I contact support?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">Our team is available 24/7 via WhatsApp at +923344904117, live chat in the app, or email at txdevelopersofficial@gmail.com. Average response time is under 3 minutes during peak hours.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I delete my account?</span><span class="faq-icon">+</span></button><div class="faq-a"><div class="faq-a-inner">You can request account deletion via the Account Deletion page in the footer. Fill in your details and the request is sent directly to our team. Deletion is processed within 3 to 5 business days after identity verification.</div></div></div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <span class="footer-logo">⚡ LuckyZone</span>
+      <p class="footer-about">Pakistan's #1 destination for online casino games and live sports betting. Play responsibly and enjoy the thrill of the zone.</p>
+      <div class="footer-trust">
+        <div class="ft-item"><span>🔒</span>SSL Secured &amp; Encrypted</div>
+        <div class="ft-item"><span>🛡️</span>Fair Play Certified</div>
+        <div class="ft-item"><span>💳</span>Instant Withdrawals</div>
+        <div class="ft-item"><span>📱</span>JazzCash &amp; EasyPaisa</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Games</h4>
+      <a>Teen Patti</a><a>Aviator</a><a>Andar Bahar</a><a>Roulette</a><a>Blackjack</a><a>Slots</a>
+    </div>
+    <div class="footer-col">
+      <h4>Sports</h4>
+      <a>Cricket (PSL)</a><a>Football</a><a>Tennis</a><a>Basketball</a><a>Kabaddi</a><a>Horse Racing</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a onclick="openPage('privacy')">Privacy Policy</a>
+      <a onclick="openPage('tos')">Terms of Service</a>
+      <a onclick="openPage('deletion')">Account Deletion</a>
+      <a href="https://luckyzone.life/join/9F21A5C2" target="_blank">Play Online</a>
+      <a href="https://github.com/TxDevelopers/luckyzone-app/releases/download/v1.0/Lucky.zone.apk">Download App</a>
+      <a href="https://wa.me/923344904117" target="_blank">WhatsApp Support</a>
+    </div>
+  </div>
+</footer>
+<div class="footer-bot">
+  <p>2025 LuckyZone Pakistan. All rights reserved. Play Responsibly. Gambling can be addictive — know your limits. 18+ Only.</p>
+  <span class="age-badge">18+ Only</span>
+</div>
+
+<!-- ══ iOS GLASS BOTTOM NAV ═══════════════════ -->
+<nav class="bnav" id="bnav">
+  <button class="bn-item active" onclick="scrollTo(0,0);setActive(this)"><span class="bn-icon">🏠</span><span>Home</span></button>
+  <div class="bn-div"></div>
+  <button class="bn-item" onclick="document.getElementById('games').scrollIntoView({behavior:'smooth'});setActive(this)"><span class="bn-icon">🎮</span><span>Games</span></button>
+  <div class="bn-div"></div>
+  <button class="bn-item" onclick="document.getElementById('sports').scrollIntoView({behavior:'smooth'});setActive(this)"><span class="bn-icon">⚽</span><span>Sports</span></button>
+  <div class="bn-div"></div>
+  <button class="bn-item" onclick="document.getElementById('download').scrollIntoView({behavior:'smooth'});setActive(this)"><span class="bn-icon">📲</span><span>App</span></button>
+  <div class="bn-div"></div>
+  <button class="bn-item" onclick="openPage('tos');setActive(this)"><span class="bn-icon">⚙️</span><span>More</span></button>
+</nav>
+
+<!-- ══ WHATSAPP FAB ════════════════════════════ -->
+<a href="https://wa.me/923344904117" target="_blank" class="wa-fab">
+  <span>💬</span>
+  <span class="wa-tip">Chat on WhatsApp</span>
+</a>
+
+<!-- ══ LEGAL: PRIVACY ════════════════════════ -->
+<div class="page-overlay" id="page-privacy">
+  <button class="page-close" onclick="closePage('privacy')">✕</button>
+  <div class="page-inner">
+    <span class="page-logo">⚡ LUCKYZONE PAKISTAN</span>
+    <div class="page-content">
+      <h1><span>Privacy</span> Policy</h1>
+      <span class="updated">Last updated: January 1, 2025</span>
+      <p>LuckyZone is committed to protecting your personal information. This policy explains how we collect, use, and safeguard your data when you use our platform.</p>
+      <div class="page-divider"></div>
+      <h2>1. Information We Collect</h2>
+      <ul>
+        <li>Account details: full name, email, phone number, date of birth</li>
+        <li>Identity verification documents (CNIC/KYC) as required by law</li>
+        <li>Financial data: payment method details, deposit and withdrawal history</li>
+        <li>Device and usage data: IP address, device type, browser, game history</li>
+        <li>Approximate location data for regulatory compliance</li>
+        <li>Support communications you send to our team</li>
+      </ul>
+      <h2>2. How We Use Your Information</h2>
+      <ul>
+        <li>To create and manage your LuckyZone account</li>
+        <li>To process deposits, withdrawals, and transactions securely</li>
+        <li>To provide customer support and resolve disputes</li>
+        <li>To send promotional offers only with your explicit consent</li>
+        <li>To comply with legal obligations and prevent fraud</li>
+        <li>To personalise your gaming experience and improve our platform</li>
+      </ul>
+      <h2>3. Data Sharing</h2>
+      <p>We do not sell, rent, or trade your personal data. We may share data with trusted partners including payment processors, KYC verification providers, and regulatory authorities when required by law.</p>
+      <h2>4. Data Security</h2>
+      <div class="page-hl">🔒 256-bit SSL/TLS encryption, two-factor authentication, and industry-standard protocols protect your data. Access is restricted to authorised personnel only.</div>
+      <h2>5. Cookies</h2>
+      <p>We use cookies and similar technologies to enhance your experience, analyse traffic, and detect fraud. You can manage preferences in your browser settings.</p>
+      <h2>6. Data Retention</h2>
+      <p>Data is retained as long as your account is active or as required by law. Financial records are kept for 5 to 7 years. Personal data is anonymised or deleted within 30 days of account closure where legally permitted.</p>
+      <h2>7. Your Rights</h2>
+      <ul>
+        <li>Right to access your personal data</li>
+        <li>Right to correct inaccurate information</li>
+        <li>Right to deletion — see Account Deletion page</li>
+        <li>Right to data portability</li>
+        <li>Right to withdraw marketing consent at any time</li>
+      </ul>
+      <h2>8. Contact Us</h2>
+      <p>Privacy queries: <a href="mailto:txdevelopersofficial@gmail.com" class="contact-link">txdevelopersofficial@gmail.com</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LEGAL: TERMS ═══════════════════════════ -->
+<div class="page-overlay" id="page-tos">
+  <button class="page-close" onclick="closePage('tos')">✕</button>
+  <div class="page-inner">
+    <span class="page-logo">⚡ LUCKYZONE PAKISTAN</span>
+    <div class="page-content">
+      <h1>Terms of <span>Service</span></h1>
+      <span class="updated">Last updated: January 1, 2025</span>
+      <p>By accessing or using LuckyZone — via browser, app, or any interface — you agree to be legally bound by these Terms. Please read them fully before playing.</p>
+      <div class="page-divider"></div>
+      <h2>1. Eligibility</h2>
+      <ul>
+        <li>You must be at least 18 years of age to use LuckyZone</li>
+        <li>You must not be in a jurisdiction where online gambling is prohibited</li>
+        <li>You may only hold one account — multiple accounts lead to immediate ban</li>
+        <li>All registration information must be truthful and accurate</li>
+      </ul>
+      <h2>2. Account Responsibility</h2>
+      <p>You are solely responsible for maintaining the confidentiality of your credentials. Do not share your account. LuckyZone is not liable for losses from unauthorised access caused by your negligence.</p>
+      <h2>3. Deposits and Withdrawals</h2>
+      <ul>
+        <li>All deposits must come from a payment method registered in your name</li>
+        <li>Withdrawals are processed within 1 to 5 business days depending on method</li>
+        <li>Minimum deposit and withdrawal thresholds apply — see the app for current limits</li>
+        <li>Large withdrawals may require additional verification documentation</li>
+      </ul>
+      <h2>4. Bonuses and Promotions</h2>
+      <p>All bonuses carry wagering requirements detailed in specific promotion terms. Abuse of bonuses results in immediate suspension and forfeiture of all funds.</p>
+      <h2>5. Fair Play</h2>
+      <div class="page-hl">🎯 All casino games use independently certified RNGs. Cheating, bot usage, or exploitation of bugs is strictly prohibited and results in permanent ban.</div>
+      <h2>6. Responsible Gambling</h2>
+      <ul>
+        <li>Deposit limits, session time limits, and self-exclusion tools are available in account settings</li>
+        <li>Gambling is entertainment, not income — never chase losses</li>
+        <li>If you believe you have a gambling problem, contact us or a local helpline immediately</li>
+      </ul>
+      <h2>7. Prohibited Activities</h2>
+      <ul>
+        <li>VPN or proxy usage to bypass geographic restrictions</li>
+        <li>Money laundering, fraud, or deceptive financial activity</li>
+        <li>Creating multiple accounts or using another person's account</li>
+        <li>Collusion with other players for unfair advantage</li>
+        <li>Any activity violating applicable law</li>
+      </ul>
+      <h2>8. Limitation of Liability</h2>
+      <p>LuckyZone is not liable for indirect, incidental, or consequential damages. Maximum liability is limited to the net amount of funds in your account at the time of any claim.</p>
+      <h2>9. Amendments</h2>
+      <p>We may amend these Terms at any time with reasonable notice. Continued use constitutes acceptance of revised Terms.</p>
+      <h2>10. Contact</h2>
+      <p>Terms queries: <a href="mailto:txdevelopersofficial@gmail.com" class="contact-link">txdevelopersofficial@gmail.com</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LEGAL: DELETION ═══════════════════════ -->
+<div class="page-overlay" id="page-deletion">
+  <button class="page-close" onclick="closePage('deletion')">✕</button>
+  <div class="page-inner">
+    <span class="page-logo">⚡ LUCKYZONE PAKISTAN</span>
+    <div class="page-content">
+      <h1>Account <span>Deletion</span></h1>
+      <span class="updated">Request permanent deletion of your LuckyZone account</span>
+      <p>Submitting this form will email your deletion request directly to our team at <strong style="color:var(--gold)">txdevelopersofficial@gmail.com</strong>. This action is permanent. Please withdraw all funds first.</p>
+      <div class="page-divider"></div>
+      <h2>What Happens When You Delete</h2>
+      <ul>
+        <li>Your account is deactivated immediately upon identity verification</li>
+        <li>All personal data is anonymised or deleted within 30 days</li>
+        <li>Transaction records may be retained for up to 7 years for legal compliance</li>
+        <li>Any remaining bonus balance will be permanently forfeited</li>
+        <li>You cannot register again with the same email for 90 days</li>
+      </ul>
+      <div class="del-warn">This is IRREVERSIBLE. Ensure all funds are withdrawn before submitting. Our team responds within 1 to 3 business days.</div>
+      <h2>Submit Deletion Request</h2>
+      <div class="del-form">
+        <input type="text" id="del-name" placeholder="Full Name (as registered)"/>
+        <input type="email" id="del-email" placeholder="Registered Email Address"/>
+        <input type="text" id="del-uid" placeholder="Username or User ID (optional)"/>
+        <select id="del-reason">
+          <option value="">Select reason for deletion (optional)</option>
+          <option>I no longer use the platform</option>
+          <option>Responsible gambling / self-exclusion</option>
+          <option>Privacy or data concerns</option>
+          <option>Switching to another platform</option>
+          <option>Technical issues</option>
+          <option>Other</option>
+        </select>
+        <textarea id="del-note" placeholder="Additional message to our team (optional)..."></textarea>
+        <button class="del-submit" onclick="submitDeletion()">Submit Deletion Request</button>
+        <div id="del-success">Your deletion request has been sent to txdevelopersofficial@gmail.com. Our team will verify your identity and confirm within 1 to 3 business days.</div>
+      </div>
+      <div class="page-divider"></div>
+      <p style="font-size:.82rem;">Need help instead? Contact us at <a href="mailto:txdevelopersofficial@gmail.com" class="contact-link">txdevelopersofficial@gmail.com</a> or WhatsApp <a href="https://wa.me/923344904117" class="contact-link">+923344904117</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--                  SCRIPTS                  -->
+<!-- ══════════════════════════════════════════ -->
+<script>
+/* LOADER */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{const l=document.getElementById('loader');l.classList.add('out');setTimeout(()=>l.remove(),750);},1950);
+});
+
+/* CURSOR */
+const curEl=document.getElementById('cur'),ringEl=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;curEl.style.left=mx+'px';curEl.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ringEl.style.left=rx+'px';ringEl.style.top=ry+'px';requestAnimationFrame(animRing);})();
+document.querySelectorAll('a,button,.game-card,.sport-card,.odd-btn,.why-card,.faq-q,.dl-feat').forEach(el=>{
+  el.addEventListener('mouseenter',()=>ringEl.classList.add('big'));
+  el.addEventListener('mouseleave',()=>ringEl.classList.remove('big'));
+});
+
+/* AUDIO */
+let aCtx;
+function getAC(){if(!aCtx)aCtx=new(window.AudioContext||window.webkitAudioContext)();return aCtx;}
+function tone(f,d,t='sine',v=.07){try{const c=getAC(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type=t;o.frequency.value=f;g.gain.setValueAtTime(v,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d);o.start();o.stop(c.currentTime+d);}catch(e){}}
+function sndClick(){tone(440,.05,'square',.04);}
+function sndCoin(){tone(880,.08,'sine',.06);setTimeout(()=>tone(1100,.1,'sine',.05),80);}
+function sndWin(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>tone(f,.15,'sine',.07),i*80));}
+function sndBet(){tone(660,.07,'triangle',.06);setTimeout(()=>tone(880,.1,'triangle',.05),60);}
+
+/* CANVAS — rich animated background */
+const canvas=document.getElementById('bgCanvas'),ctx2=canvas.getContext('2d');
+let W,H;
+function rsz(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+rsz();window.addEventListener('resize',rsz);
+
+/* particles */
+const pts=[];
+class Pt{
+  constructor(){this.reset();}
+  reset(){
+    this.x=Math.random()*W;this.y=Math.random()*H;
+    this.r=Math.random()*1.6+.3;
+    this.vx=(Math.random()-.5)*.25;this.vy=(Math.random()-.5)*.25;
+    this.hue=[45,0,200,270][Math.floor(Math.random()*4)];
+    this.a=Math.random()*.32+.07;
+  }
+  draw(){ctx2.save();ctx2.globalAlpha=this.a;ctx2.beginPath();ctx2.arc(this.x,this.y,this.r,0,Math.PI*2);ctx2.fillStyle='hsl('+this.hue+',100%,64%)';ctx2.fill();ctx2.restore();}
+  update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();}
+}
+for(let i=0;i<160;i++)pts.push(new Pt());
+
+/* glowing lines */
+const lines=[];
+class Line{
+  constructor(){this.reset();}
+  reset(){
+    this.x1=Math.random()*W;this.y1=Math.random()*H;
+    const ang=Math.random()*Math.PI*2,len=60+Math.random()*120;
+    this.x2=this.x1+Math.cos(ang)*len;this.y2=this.y1+Math.sin(ang)*len;
+    this.a=Math.random()*.04+.01;this.life=0;this.maxLife=120+Math.random()*180;
+    this.col=Math.random()>.6?'#FFD700':'#00BFFF';
+  }
+  draw(){
+    const p=this.life/this.maxLife,alpha=this.a*Math.sin(p*Math.PI);
+    ctx2.save();ctx2.globalAlpha=alpha;ctx2.strokeStyle=this.col;ctx2.lineWidth=.5;
+    ctx2.beginPath();ctx2.moveTo(this.x1,this.y1);ctx2.lineTo(this.x2,this.y2);ctx2.stroke();ctx2.restore();
+    this.life++;if(this.life>this.maxLife)this.reset();
+  }
+}
+for(let i=0;i<30;i++){const l=new Line();l.life=Math.random()*l.maxLife;lines.push(l);}
+
+function drawConnections(){
+  for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+    const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+    if(d<88){ctx2.save();ctx2.globalAlpha=(1-d/88)*.065;ctx2.strokeStyle='#FFD700';ctx2.lineWidth=.4;ctx2.beginPath();ctx2.moveTo(pts[i].x,pts[i].y);ctx2.lineTo(pts[j].x,pts[j].y);ctx2.stroke();ctx2.restore();}
+  }
+}
+
+/* slow gradient motion */
+let gradT=0;
+function drawGradient(){
+  gradT+=.003;
+  const gx=W*.5+Math.sin(gradT)*(W*.25),gy=H*.4+Math.cos(gradT*.7)*(H*.2);
+  const g=ctx2.createRadialGradient(gx,gy,0,gx,gy,H*.6);
+  g.addColorStop(0,'rgba(255,165,0,0.03)');g.addColorStop(.5,'rgba(232,0,61,0.015)');g.addColorStop(1,'rgba(0,0,0,0)');
+  ctx2.fillStyle=g;ctx2.fillRect(0,0,W,H);
+}
+
+(function loop(){
+  ctx2.clearRect(0,0,W,H);
+  drawGradient();
+  lines.forEach(l=>l.draw());
+  pts.forEach(p=>{p.update();p.draw();});
+  drawConnections();
+  requestAnimationFrame(loop);
+})();
+
+/* FLOATING SYMBOLS */
+const fc=document.getElementById('floatCards');
+const syms=['🃏','♠','♥','♦','♣','🎲','💰','⭐','🏆','✈️','🏏','⚽','🎾','🪙','🎰','🎯','🥊'];
+for(let i=0;i<24;i++){
+  const d=document.createElement('div');d.className='fcard';
+  d.textContent=syms[Math.floor(Math.random()*syms.length)];
+  d.style.left=Math.random()*100+'%';
+  d.style.animationDuration=(10+Math.random()*18)+'s';
+  d.style.animationDelay=(Math.random()*20)+'s';
+  d.style.fontSize=(1.3+Math.random()*2.4)+'rem';
+  fc.appendChild(d);
+}
+
+/* AVIATOR TICKER */
+const avEl=document.getElementById('avVal');
+let mult=1.00,going=true;
+function avTick(){
+  if(going){
+    mult+=Math.random()*.06+.01;avEl.textContent=mult.toFixed(2)+'x';
+    avEl.style.color=mult>5?'#00E676':mult>2?'#FFD700':'#E8003D';
+    avEl.style.textShadow='0 0 22px '+avEl.style.color;
+    if(mult>Math.random()*12+3){going=false;mult=1.00;setTimeout(()=>{going=true;},1700);}
+  }
+  setTimeout(avTick,115);
+}
+avTick();
+
+/* JACKPOT */
+let jp=12847432;
+function updJP(){
+  jp+=Math.floor(Math.random()*480+60);
+  const el=document.getElementById('jpAmt');
+  if(el)el.textContent='PKR '+jp.toLocaleString('en-PK');
+  setTimeout(updJP,900+Math.random()*1300);
+}
+updJP();
+
+/* RT STATS with smooth count animation */
+let onBase=4821,wonBase=2400000;
+function rnd(a,b){return Math.floor(Math.random()*(b-a)+a);}
+
+function animNum(el,target){
+  if(!el)return;
+  const cur=parseFloat(el.textContent.replace(/[^0-9.]/g,''))||0;
+  const diff=target-cur,steps=20;let i=0;
+  const tick=()=>{i++;const v=cur+diff*(i/steps);el.textContent=formatRT(el,v,target);if(i<steps)requestAnimationFrame(tick);};
+  tick();
+}
+function formatRT(el,v,target){
+  if(el.id==='rtWon'||el.id==='act2')return'PKR '+(v/1000).toFixed(1)+'K';
+  return Math.round(v).toLocaleString();
+}
+
+function updRT(){
+  onBase+=rnd(-10,14);wonBase+=rnd(1200,9000);
+  const id=s=>document.getElementById(s);
+  if(id('rtOnline')){id('rtOnline').textContent=onBase.toLocaleString();}
+  if(id('rtWon')){id('rtWon').textContent='PKR '+(wonBase/1000).toFixed(1)+'K';}
+  if(id('rtGames')){id('rtGames').textContent=rnd(34,44);}
+  if(id('rtSports')){id('rtSports'). textContent=rnd(11,18);}
+  if(id('rtDep')){id('rtDep').textContent=rnd(110,175);}
+  if(id('rtWin')){id('rtWin').textContent=rnd(75,108);}
+  if(id('rtJoin')){id('rtJoin').textContent=rnd(15,38);}
+  if(id('act1')){id('act1').textContent=rnd(18,40);}
+  if(id('act2')){id('act2').textContent='PKR '+rnd(80,220)+',000';}
+  if(id('act3')){id('act3').textContent=rnd(8,18);}
+  if(id('act4')){id('act4').textContent=onBase.toLocaleString();}
+}
+setInterval(updRT,3200);
+
+/* LIVE ODDS */
+const oddsPool={KK:[1.75,1.80,1.85,1.90,1.95,2.00,1.88,1.82],Draw:[9.2,9.5,9.8,9.1,9.6,9.4],LQ:[1.95,2.00,2.10,2.05,1.98,2.08]};
+const oddsIdx={KK:0,Draw:0,LQ:0};
+function animOdds(){
+  const teams=['KK','Draw','LQ'],t=teams[Math.floor(Math.random()*3)];
+  oddsIdx[t]=(oddsIdx[t]+1)%oddsPool[t].length;
+  const nv=oddsPool[t][oddsIdx[t]];
+  document.querySelectorAll('.odd-btn').forEach(btn=>{
+    if(btn.textContent.trim().split(' ')[0]===t){
+      const sp=btn.querySelector('.odd-val');if(!sp)return;
+      sp.textContent=nv.toFixed(2);sp.classList.remove('bump');void sp.offsetWidth;sp.classList.add('bump');
+    }
+  });
+}
+setInterval(animOdds,2600);
+
+/* MATCH TIMER */
+let secs=0;
+setInterval(()=>{secs++;const m=String(Math.floor(secs/60)).padStart(2,'0'),s2=String(secs%60).padStart(2,'0');const el=document.getElementById('matchTimer');if(el)el.textContent=m+':'+s2;},1000);
+
+/* WINNER FEED */
+const wfData=[
+  {n:'Ali_PK92',g:'Aviator',a:'PKR 48,500',c:'#FFD700'},{n:'ZeeshanBhai',g:'Teen Patti',a:'PKR 12,200',c:'#00E676'},
+  {n:'Hamza_Luck',g:'Slots',a:'PKR 250,000',c:'#FFD700'},{n:'Omar_786',g:'Roulette',a:'PKR 31,000',c:'#00E676'},
+  {n:'SaadWins',g:'Blackjack',a:'PKR 18,750',c:'#00E676'},{n:'Bilal_KHI',g:'Aviator',a:'PKR 95,000',c:'#FFD700'},
+  {n:'ImranCricket',g:'Cricket Bet',a:'PKR 67,000',c:'#FFD700'},{n:'Nasir_LHR',g:'Andar Bahar',a:'PKR 8,400',c:'#00E676'},
+  {n:'FarhanPro',g:'Aviator',a:'PKR 320,000',c:'#FFD700'},{n:'AhmedKing',g:'Teen Patti',a:'PKR 22,500',c:'#00E676'},
+  {n:'UsmanBet',g:'PSL Bet',a:'PKR 55,000',c:'#FFD700'},{n:'TariqSlots',g:'Slots',a:'PKR 180,000',c:'#FFD700'},
+  {n:'Kashif_786',g:'Blackjack',a:'PKR 14,900',c:'#00E676'},{n:'ShoaibWin',g:'Roulette',a:'PKR 42,000',c:'#FFD700'},
+  {n:'Danish_PK',g:'Aviator',a:'PKR 76,500',c:'#FFD700'},
+];
+const avCols=['#FFD700','#E8003D','#00E676','#00BFFF','#9D4EDD'];
+function buildWF(){
+  const track=document.getElementById('wfTrack');if(!track)return;
+  [...wfData,...wfData].forEach(w=>{
+    const col=avCols[Math.floor(Math.random()*avCols.length)];
+    const item=document.createElement('div');item.className='wf-item';
+    item.innerHTML='<div class="wf-av" style="background:'+col+'">'+w.n[0]+'</div><div><div class="wf-name">'+w.n+'</div><div class="wf-game">'+w.g+'</div></div><div class="wf-amt" style="color:'+w.c+'">'+w.a+'</div>';
+    track.appendChild(item);
+  });
+}
+buildWF();
+
+/* COUNTER ANIMATION */
+function animCounter(el,target){
+  let cur=0;const step=target/80;
+  const t=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(t);}
+    if(target>=1000000)el.textContent=(Math.floor(cur/100000)/10)+'M+';
+    else if(target>=1000)el.textContent=Math.floor(cur/1000)+'K+';
+    else if(target===99)el.textContent=Math.floor(cur)+'%';
+    else el.textContent=Math.floor(cur)+'+';
+  },20);
+}
+
+/* REVEAL + PARALLAX */
+const revEls=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting)setTimeout(()=>{
+      e.target.classList.add('visible');
+      const n=e.target.querySelector('.stat-num');
+      if(n&&n.dataset.target){animCounter(n,parseInt(n.dataset.target));delete n.dataset.target;}
+    },i*60);
+  });
+},{threshold:.1});
+revEls.forEach(r=>obs.observe(r));
+
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  const hg=document.querySelector('.hero-grid'),o1=document.querySelector('.orb1'),o2=document.querySelector('.orb2');
+  if(hg)hg.style.transform='translateY('+(sy*.14)+'px)';
+  if(o1)o1.style.transform='translateY('+(sy*.08)+'px)';
+  if(o2)o2.style.transform='translateY('+(sy*-.05)+'px)';
+  document.getElementById('mainNav').classList.toggle('scrolled',sy>60);
+});
+
+/* PAGES */
+function openPage(id){sndClick();const p=document.getElementById('page-'+id);p.classList.add('active');p.scrollTop=0;document.body.style.overflow='hidden';}
+function closePage(id){sndClick();document.getElementById('page-'+id).classList.remove('active');document.body.style.overflow='';}
+document.querySelectorAll('.page-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closePage(o.id.replace('page-',''));}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.page-overlay.active').forEach(o=>closePage(o.id.replace('page-','')));});
+
+/* FAQ */
+function toggleFaq(btn){sndClick();const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+
+/* BET */
+function placeBet(btn,team){sndBet();document.querySelectorAll('.odd-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');showToast('Bet placed on '+team+'!');}
+
+/* DELETION */
+function submitDeletion(){
+  const name=document.getElementById('del-name').value.trim(),email=document.getElementById('del-email').value.trim();
+  const uid=document.getElementById('del-uid').value.trim(),reason=document.getElementById('del-reason').value,note=document.getElementById('del-note').value.trim();
+  if(!name||!email){showToast('Please fill in your name and email.');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Please enter a valid email.');return;}
+  const sub=encodeURIComponent('LuckyZone Account Deletion Request — '+name);
+  const body=encodeURIComponent('ACCOUNT DELETION REQUEST\n========================\n\nFull Name: '+name+'\nRegistered Email: '+email+'\nUsername/ID: '+(uid||'Not provided')+'\nReason: '+(reason||'Not specified')+'\n\nAdditional Notes:\n'+(note||'None')+'\n\n------------------------\nSubmitted via LuckyZone website.');
+  window.location.href='mailto:txdevelopersofficial@gmail.com?subject='+sub+'&body='+body;
+  document.getElementById('del-success').style.display='block';showToast('Deletion request sent!');
+}
+
+/* TOAST */
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3300);}
+
+/* COIN RAIN */
+document.querySelectorAll('.game-card,.sport-card').forEach(c=>{
+  c.addEventListener('click',()=>{
+    sndCoin();
+    for(let i=0;i<14;i++){
+      const coin=document.createElement('div');coin.className='coin';
+      coin.textContent=['🪙','💰','⭐','🎰'][Math.floor(Math.random()*4)];
+      coin.style.left=Math.random()*100+'vw';
+      coin.style.animationDuration=(1+Math.random())+'s';
+      coin.style.animationDelay=Math.random()*.4+'s';
+      coin.style.fontSize=(1.1+Math.random()*.8)+'rem';
+      document.body.appendChild(coin);setTimeout(()=>coin.remove(),2600);
+    }
+    sndWin();showToast('Opening game...');
+  });
+});
+
+/* BOTTOM NAV */
+function setActive(btn){document.querySelectorAll('.bn-item').forEach(b=>b.classList.remove('active'));btn.classList.add('active');sndClick();}
+</script>
+</body>
+</html>
